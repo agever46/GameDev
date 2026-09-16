@@ -15,7 +15,7 @@ func host_game(desired_name: String) -> bool:
 	var peer := ENetMultiplayerPeer.new()
 	var err := peer.create_server(PORT, MAX_PLAYERS)
 	if err != OK:
-		connection_failed.emit("לא ניתן לפתוח שרת (קוד שגיאה %d)" % err)
+		connection_failed.emit("Could not start server (error code %d)" % err)
 		return false
 	multiplayer.multiplayer_peer = peer
 	_connect_signals()
@@ -32,7 +32,7 @@ func join_game(ip: String, desired_name: String) -> bool:
 	var peer := ENetMultiplayerPeer.new()
 	var err := peer.create_client(address, PORT)
 	if err != OK:
-		connection_failed.emit("לא ניתן להתחבר לכתובת %s (קוד שגיאה %d)" % [address, err])
+		connection_failed.emit("Could not connect to %s (error code %d)" % [address, err])
 		return false
 	multiplayer.multiplayer_peer = peer
 	_connect_signals()
@@ -62,11 +62,11 @@ func _on_connected_to_server() -> void:
 	GameManager.state_changed.emit(GameManager.state)
 
 func _on_connection_failed() -> void:
-	connection_failed.emit("החיבור לשרת נכשל")
+	connection_failed.emit("Connection to server failed")
 	multiplayer.multiplayer_peer = null
 
 func _on_server_disconnected() -> void:
-	connection_failed.emit("החיבור לשרת אבד")
+	connection_failed.emit("Connection to server lost")
 	multiplayer.multiplayer_peer = null
 	GameManager.reset_to_menu()
 

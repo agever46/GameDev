@@ -9,11 +9,11 @@ func _ready() -> void:
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
 
-	var text := "תיקו!"
+	var text := "Draw!"
 	if GameManager.last_winner == GameManager.Team.COP:
-		text = "השוטרים ניצחו!"
+		text = "Cops win!"
 	elif GameManager.last_winner == GameManager.Team.ROBBER:
-		text = "הפושעים ניצחו!"
+		text = "Robbers win!"
 
 	var title := Label.new()
 	title.text = text
@@ -22,19 +22,19 @@ func _ready() -> void:
 	add_child(title)
 
 	var score := Label.new()
-	score.text = "שוטרים %d - %d פושעים" % [GameManager.scores[GameManager.Team.COP], GameManager.scores[GameManager.Team.ROBBER]]
+	score.text = "Cops %d - %d Robbers" % [GameManager.scores[GameManager.Team.COP], GameManager.scores[GameManager.Team.ROBBER]]
 	score.position = Vector2(500, 320)
 	add_child(score)
 
 	if multiplayer.is_server():
 		var btn := Button.new()
-		btn.text = "חזרה ללובי"
+		btn.text = "Return to Lobby"
 		btn.position = Vector2(560, 400)
 		btn.pressed.connect(_on_return_pressed)
 		add_child(btn)
 	else:
 		var wait_label := Label.new()
-		wait_label.text = "ממתין למארח לחזור ללובי..."
+		wait_label.text = "Waiting for the host to return to lobby..."
 		wait_label.position = Vector2(500, 400)
 		add_child(wait_label)
 

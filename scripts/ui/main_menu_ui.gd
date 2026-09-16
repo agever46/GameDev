@@ -25,30 +25,30 @@ func _ready() -> void:
 	panel.add_child(title)
 
 	var subtitle := Label.new()
-	subtitle.text = "משחק מולטיפלייר עצמאי: שוטרים נגד פושעים"
+	subtitle.text = "Standalone multiplayer: Cops vs Robbers"
 	panel.add_child(subtitle)
 
 	_name_edit = LineEdit.new()
-	_name_edit.placeholder_text = "שם שחקן"
+	_name_edit.placeholder_text = "Player name"
 	_name_edit.text = "Player%d" % (randi() % 1000)
 	panel.add_child(_name_edit)
 
 	var host_btn := Button.new()
-	host_btn.text = "פתח משחק חדש (Host)"
+	host_btn.text = "Host New Game"
 	host_btn.pressed.connect(_on_host_pressed)
 	panel.add_child(host_btn)
 
 	var join_label := Label.new()
-	join_label.text = "או הצטרף למשחק קיים:"
+	join_label.text = "Or join an existing game:"
 	panel.add_child(join_label)
 
 	_ip_edit = LineEdit.new()
-	_ip_edit.placeholder_text = "כתובת IP להצטרפות"
+	_ip_edit.placeholder_text = "Server IP to join"
 	_ip_edit.text = "127.0.0.1"
 	panel.add_child(_ip_edit)
 
 	var join_btn := Button.new()
-	join_btn.text = "הצטרף למשחק (Join)"
+	join_btn.text = "Join Game"
 	join_btn.pressed.connect(_on_join_pressed)
 	panel.add_child(join_btn)
 

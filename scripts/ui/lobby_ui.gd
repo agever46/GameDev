@@ -13,7 +13,7 @@ func _ready() -> void:
 	add_child(bg)
 
 	var title := Label.new()
-	title.text = "לובי - ממתינים לשחקנים"
+	title.text = "Lobby - Waiting for Players"
 	title.position = Vector2(40, 30)
 	title.add_theme_font_size_override("font_size", 28)
 	add_child(title)
@@ -24,7 +24,7 @@ func _ready() -> void:
 	add_child(_list_label)
 
 	_start_btn = Button.new()
-	_start_btn.text = "התחל משחק"
+	_start_btn.text = "Start Game"
 	_start_btn.position = Vector2(40, 600)
 	_start_btn.pressed.connect(_on_start_pressed)
 	_start_btn.visible = multiplayer.is_server()
@@ -32,7 +32,7 @@ func _ready() -> void:
 
 	if not multiplayer.is_server():
 		var hint := Label.new()
-		hint.text = "ממתין למארח שיתחיל את המשחק..."
+		hint.text = "Waiting for the host to start the game..."
 		hint.position = Vector2(40, 600)
 		add_child(hint)
 
@@ -43,9 +43,9 @@ func _on_start_pressed() -> void:
 	GameManager.start_game()
 
 func _refresh() -> void:
-	var text := "שחקנים מחוברים (%d/10):\n" % GameManager.players.size()
+	var text := "Connected players (%d/10):\n" % GameManager.players.size()
 	for pid in GameManager.players.keys():
 		var info = GameManager.players[pid]
-		var tag := " (את/ה)" if pid == multiplayer.get_unique_id() else ""
+		var tag := " (you)" if pid == multiplayer.get_unique_id() else ""
 		text += "- %s%s\n" % [info.player_name, tag]
 	_list_label.text = text
