@@ -1,0 +1,42 @@
+class_name VictoryUI
+extends Control
+
+func _ready() -> void:
+	size = Vector2(1280, 720)
+
+	var bg := ColorRect.new()
+	bg.color = Color(0.08, 0.09, 0.12)
+	bg.size = Vector2(1280, 720)
+	add_child(bg)
+
+	var text := "תיקו!"
+	if GameManager.last_winner == GameManager.Team.COP:
+		text = "השוטרים ניצחו!"
+	elif GameManager.last_winner == GameManager.Team.ROBBER:
+		text = "הפושעים ניצחו!"
+
+	var title := Label.new()
+	title.text = text
+	title.position = Vector2(440, 260)
+	title.add_theme_font_size_override("font_size", 40)
+	add_child(title)
+
+	var score := Label.new()
+	score.text = "שוטרים %d - %d פושעים" % [GameManager.scores[GameManager.Team.COP], GameManager.scores[GameManager.Team.ROBBER]]
+	score.position = Vector2(500, 320)
+	add_child(score)
+
+	if multiplayer.is_server():
+		var btn := Button.new()
+		btn.text = "חזרה ללובי"
+		btn.position = Vector2(560, 400)
+		btn.pressed.connect(_on_return_pressed)
+		add_child(btn)
+	else:
+		var wait_label := Label.new()
+		wait_label.text = "ממתין למארח לחזור ללובי..."
+		wait_label.position = Vector2(500, 400)
+		add_child(wait_label)
+
+func _on_return_pressed() -> void:
+	GameManager.return_to_lobby()
