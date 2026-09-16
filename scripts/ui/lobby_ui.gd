@@ -5,11 +5,11 @@ var _list_label: Label
 var _start_btn: Button
 
 func _ready() -> void:
-	size = Vector2(1280, 720)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 
 	var bg := ColorRect.new()
 	bg.color = Color(0.08, 0.09, 0.12)
-	bg.size = Vector2(1280, 720)
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
 
 	var title := Label.new()

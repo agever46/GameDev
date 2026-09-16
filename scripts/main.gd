@@ -5,7 +5,6 @@ var ui_layer: CanvasLayer
 var current_ui: Control
 
 func _ready() -> void:
-	get_window().size = Vector2i(1280, 720)
 	get_window().title = "Cops & Robbers"
 
 	world = Node2D.new()
@@ -27,6 +26,9 @@ func _ready() -> void:
 	_show_ui(MainMenuUI.new())
 
 	_handle_cmdline_args()
+
+	print("[DIAG] window size=", get_window().size, " ui_layer.visible=", ui_layer.visible, " ui_layer children=", ui_layer.get_child_count())
+	print("[DIAG] current_ui=", current_ui, " visible=", current_ui.visible if current_ui else "n/a", " rect=", current_ui.get_rect() if current_ui else "n/a", " children=", current_ui.get_child_count() if current_ui else -1)
 
 func _on_state_changed(new_state: int) -> void:
 	match new_state:

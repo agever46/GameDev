@@ -11,7 +11,7 @@ var _ability_cd_left: float = 0.0
 var _ability_cd_total: float = 1.0
 
 func _ready() -> void:
-	size = Vector2(1280, 720)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 	_timer_label = Label.new()
