@@ -21,12 +21,12 @@ func _ready() -> void:
 	add_child(_timer_label)
 
 	_score_label = Label.new()
-	_score_label.position = Vector2(20, 20)
+	_score_label.position = Vector2(100, 20)
 	_score_label.add_theme_font_size_override("font_size", 22)
 	add_child(_score_label)
 
 	_team_label = Label.new()
-	_team_label.position = Vector2(20, 60)
+	_team_label.position = Vector2(100, 60)
 	add_child(_team_label)
 
 	_prompt_label = Label.new()

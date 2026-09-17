@@ -15,18 +15,18 @@ func _ready() -> void:
 
 	var title := Label.new()
 	title.text = "Lobby - Waiting for Players"
-	title.position = Vector2(40, 30)
+	title.position = Vector2(120, 30)
 	title.add_theme_font_size_override("font_size", 28)
 	add_child(title)
 
 	_list_label = Label.new()
-	_list_label.position = Vector2(40, 90)
+	_list_label.position = Vector2(120, 90)
 	_list_label.size = Vector2(500, 480)
 	add_child(_list_label)
 
 	_start_btn = Button.new()
 	_start_btn.text = "Start Game"
-	_start_btn.position = Vector2(40, 600)
+	_start_btn.position = Vector2(120, 600)
 	_start_btn.pressed.connect(_on_start_pressed)
 	_start_btn.visible = multiplayer.is_server()
 	add_child(_start_btn)
@@ -34,7 +34,7 @@ func _ready() -> void:
 	if not multiplayer.is_server():
 		var hint := Label.new()
 		hint.text = "Waiting for the host to start the game..."
-		hint.position = Vector2(40, 600)
+		hint.position = Vector2(120, 600)
 		add_child(hint)
 
 	GameManager.players_changed.connect(_refresh)
