@@ -6,6 +6,7 @@ var _ip_edit: LineEdit
 var _status_label: Label
 
 func _ready() -> void:
+	layout_direction = Control.LAYOUT_DIRECTION_LTR
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 
 	var bg := ColorRect.new()

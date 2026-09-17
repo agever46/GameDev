@@ -11,6 +11,7 @@ var _ability_cd_left: float = 0.0
 var _ability_cd_total: float = 1.0
 
 func _ready() -> void:
+	layout_direction = Control.LAYOUT_DIRECTION_LTR
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 
